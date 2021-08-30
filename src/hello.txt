@@ -1,0 +1,1 @@
+New feature: State object. This will make the singleton change state based on which state it's in.
