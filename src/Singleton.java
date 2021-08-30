@@ -1,4 +1,3 @@
-//learning singleton creational pattern
 public enum Singleton {
     INSTANCE;
 
