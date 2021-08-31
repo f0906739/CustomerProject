@@ -1,15 +1,8 @@
 public class Main {
     public static void main(String[] args) {
         Singleton lol = Singleton.INSTANCE;
-        Singleton hi = Singleton.INSTANCE;
-
-
-        System.out.println(lol.getMessage());
-        System.out.println(hi.getMessage());
-
-        lol.print("Hello");
-
-        System.out.println(lol.getMessage());
-        System.out.println(hi.getMessage());
+        Customer john = new Customer();
+        john = john.generateAddress("3465432 Hello World");
+        System.out.println(john.getAddress());
     }
 }

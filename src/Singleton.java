@@ -1,13 +1,7 @@
 public enum Singleton {
     INSTANCE;
 
-    private String message;
+    private Customer customer;
 
-    public String getMessage() {
-        return message;
-    }
 
-    public void print(String something){
-        message = something;
-    }
 }
