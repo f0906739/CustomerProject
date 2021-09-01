@@ -18,9 +18,9 @@ public final class ValidAdressCalculator {
 
     public boolean compute() {
         for(int i = 0; i<address.getAddress().length(); i++){
-            if (passedFirstNums && !charIsSeparator(i)) continue;
+            if (!passedFirstNums && !charIsSeparator(i)) continue;
 
-            if (!passedFirstNums && charIsSeparator(i)){
+            if (!passedFirstNums){
                 getFirstNums(i);
                 if (!firstNumsValid())
                     return false;
@@ -30,14 +30,27 @@ public final class ValidAdressCalculator {
             if(!passedFirstLetterOfWord){
                 indexAtFirstLetterOfWord = i;
                 passedFirstLetterOfWord = true;
+                continue;
             }
 
-            word = address.getAddress().substring(indexAtFirstLetterOfWord, i);
+            if (charIsLastValue(i)) {
+                getWord(i);
+                return wordValid();
+            }
+
+            if (!charIsSeparator(i)) continue;
+
+            getWord(i);
             if(!wordValid())
                 return false;
+            passedFirstLetterOfWord = false;
         }
 
-        return true;
+        return false;
+    }
+
+    private boolean charIsLastValue(int index){
+        return index == address.getAddress().length() - 1;
     }
 
     private void getFirstNums(int index){
@@ -58,6 +71,10 @@ public final class ValidAdressCalculator {
     }
 
     private boolean wordValid(){
-        return Character.isUpperCase(firstNums.charAt(0));
+        return Character.isUpperCase(word.charAt(indexAtFirstLetterOfWord));
+    }
+
+    private void getWord(int lastIndex){
+        word = address.getAddress().substring(indexAtFirstLetterOfWord, lastIndex);
     }
 }

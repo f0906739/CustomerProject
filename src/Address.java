@@ -1,9 +1,10 @@
 public class Address {
-    private String address;
+    private final String address;
 
     public String getAddress(){
         return address;
     }
+
     public Address() {
         this.address = "";
     }
