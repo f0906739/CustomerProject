@@ -34,7 +34,7 @@ public final class ValidAdressCalculator {
             }
 
             if (charIsLastValue(i)) {
-                getWord(i);
+                getWord(i + 1);
                 return wordValid();
             }
 

@@ -20,12 +20,8 @@ public class Customer {
     }
 
     public Customer generateAddress(Address address){
-        if (!validAddress(address)) return new Customer(this.name, this.address, this.socialSecurityNumber);
+        if (!address.validAddress()) return new Customer(this.name, this.address, this.socialSecurityNumber);
         return new Customer(this.name, address, this.socialSecurityNumber);
-    }
-
-    private boolean validAddress(Address address){
-        return address.validAddress();
     }
 
     public String getName() {
