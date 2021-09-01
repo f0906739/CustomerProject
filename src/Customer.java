@@ -1,15 +1,15 @@
 public class Customer {
     private final String name;
-    private final String address;
+    private final Address address;
     private final int socialSecurityNumber;
 
     public Customer(){
         this.name = "";
-        this.address = "";
+        this.address = new Address();
         this.socialSecurityNumber = -1;
     }
 
-    private Customer(String name, String address, int socialSecurityNumber) {
+    private Customer(String name, Address address, int socialSecurityNumber) {
         this.name = name;
         this.address = address;
         this.socialSecurityNumber = socialSecurityNumber;
@@ -19,20 +19,20 @@ public class Customer {
         return new Customer(name, this.address, this.socialSecurityNumber);
     }
 
-    public Customer generateAddress(String address){
+    public Customer generateAddress(Address address){
         if (!validAddress(address)) return new Customer(this.name, this.address, this.socialSecurityNumber);
         return new Customer(name, address, this.socialSecurityNumber);
     }
 
-    private boolean validAddress(String address){
-        return new ValidAdressCalculator(this, address).compute();
+    private boolean validAddress(Address address){
+        return address.validAddress();
     }
 
     public String getName() {
         return name;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 

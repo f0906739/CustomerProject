@@ -1,6 +1,5 @@
 public final class ValidAdressCalculator {
-    private final Customer customer;
-    private final String address;
+    private final Address address;
 
     private String firstNums;
     private boolean passedFirstNums;
@@ -10,8 +9,7 @@ public final class ValidAdressCalculator {
     private boolean passedFirstLetterOfWord;
     private int indexAtFirstLetterOfWord;
 
-    public ValidAdressCalculator(Customer customer, String address){
-        this.customer = customer;
+    public ValidAdressCalculator(Address address){
         this.address = address;
         this.word = "";
         this.passedFirstNums = false;
@@ -19,7 +17,7 @@ public final class ValidAdressCalculator {
     }
 
     public boolean compute() {
-        for(int i = 0; i<address.length(); i++){
+        for(int i = 0; i<address.getAddress().length(); i++){
             if (passedFirstNums && !charIsSeparator(i)) continue;
 
             if (!passedFirstNums && charIsSeparator(i)){
@@ -34,7 +32,7 @@ public final class ValidAdressCalculator {
                 passedFirstLetterOfWord = true;
             }
 
-            word = address.substring(indexAtFirstLetterOfWord, i);
+            word = address.getAddress().substring(indexAtFirstLetterOfWord, i);
             if(!wordValid())
                 return false;
         }
@@ -43,12 +41,12 @@ public final class ValidAdressCalculator {
     }
 
     private void getFirstNums(int index){
-        firstNums = address.substring(0, index);
+        firstNums = address.getAddress().substring(0, index);
         passedFirstNums = true;
     }
 
     private boolean charIsSeparator(int index){
-        return address.charAt(index) == SEPARATOR;
+        return address.getAddress().charAt(index) == SEPARATOR;
     }
 
     private boolean firstNumsValid(){
