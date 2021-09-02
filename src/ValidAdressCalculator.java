@@ -19,29 +19,7 @@ public final class ValidAdressCalculator {
     public boolean compute() {
         for(int i = 0; i<address.getAddress().length(); i++){
             if (!passedFirstNums && !charIsSeparator(i)) continue;
-
-            if (!passedFirstNums){
-                getFirstNums(i);
-                if (!firstNumsValid())
-                    return false;
-                continue;
-            }
-
-            if(!passedFirstLetterOfWord){
-                indexAtFirstLetterOfWord = i;
-                passedFirstLetterOfWord = true;
-                continue;
-            }
-
-            if (charIsLastValue(i)) {
-                getWord(i + 1);
-                return wordValid();
-            }
-
-            if (!charIsSeparator(i)) continue;
-
-            getWord(i);
-            if(!wordValid())
+dfg
                 return false;
             passedFirstLetterOfWord = false;
         }
